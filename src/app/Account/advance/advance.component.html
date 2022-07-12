@@ -1,11 +1,13 @@
 <div>
-    <div class="row mt-4 d-flex justify-content-center">
-        <label class="col-3 col-form-label">Amount :</label>
-        <div class="col-4">
-            <input type="text" class="form-control inpStyle">
+    <form [formGroup]="frm_Advance">
+        <div class="row mt-4 d-flex justify-content-center">
+            <label class="col-3 col-form-label">Amount :</label>
+            <div class="col-4">
+                <input type="text" class="form-control inpStyle" formControlName="Amount">
+            </div>
         </div>
-    </div>
-    <div class="d-flex justify-content-center mt-4">
-        <button class="btn btn-info">Save</button>
-    </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-info" (click)="onSave()">Save</button>
+        </div>
+    </form>
 </div>
