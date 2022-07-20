@@ -9,8 +9,10 @@ import { UserService } from 'src/app/Services/users/user.service';
   styleUrls: ['./bill.component.css']
 })
 export class BillComponent implements OnInit {
-  constructor(private user: UserService, private http: HttpService, private error: ErrorHandlingService) {
-  }
+  arr_tableData: any;
+  bln_data: any;
+
+  constructor(private user: UserService, private http: HttpService, private error: ErrorHandlingService) {}
 
   ngOnInit(): void {
     this.getData();
@@ -19,8 +21,17 @@ export class BillComponent implements OnInit {
     let data = {};
     Object.assign(data, { UId: this.user.getUId() }, { No: this.user.getMemberNo() }, { BillDetails: this.user.getBillDetails() });
     console.log(data);
+    this.arr_tableData = [];
     this.http.postMethod('DailyData/getBill', data).subscribe((res: any) => {
-      console.log(res);
+      if (res.result == "No data") {
+        this.bln_data = false;
+      }
+      else if (res.result == "Data") {
+        this.bln_data = true;
+        res.data.forEach((ele: any) => {
+          this.arr_tableData.push(ele)
+        });
+      }
     }, (err: any) => {
       console.log(err);
       this.error.checkError(err);

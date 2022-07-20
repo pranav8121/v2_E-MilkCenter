@@ -1,1 +1,30 @@
-<p>bill works!</p>
+<div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr class="text-white">
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Milk</th>
+                    <th>Snf</th>
+                    <th>Fat</th>
+                    <th>Rate</th>
+                    <th>Total Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-white" *ngFor="let data of arr_tableData">
+                    <td *ngIf="!bln_data">No Data Found!!</td>
+                    <td *ngIf="bln_data">{{data.date | date:'d-M-yy'}}</td>
+                    <td *ngIf="bln_data">{{(data.hour=='morning')?'सकाळ':'संध्याकाळ'}}</td>
+                    <td *ngIf="bln_data">{{data.milk}}</td>
+                    <td *ngIf="bln_data">{{data.snf}}</td>
+                    <td *ngIf="bln_data">{{data.fat}}</td>
+                    <td *ngIf="bln_data">{{data.rate}}</td>
+                    <td *ngIf="bln_data">{{data.t_rate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -10,8 +10,8 @@ import { UserService } from './Services/users/user.service';
 })
 export class AppComponent implements OnInit {
   title = 'Client';
-  connection:boolean=false;
-  constructor(private webservice: WebsocketserviceService, private user: UserService,private notify:NotifyService) {
+  connection: boolean = false;
+  constructor(private webservice: WebsocketserviceService, private user: UserService, private notify: NotifyService) {
 
   }
   ngOnInit() {
@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
 
       let dataToSend = {
         msg: "success",
-        token: token
+        token: this.user.getToken()
       };
-      this.connection=true
+      this.connection = true
       if (Login) {
         this.webservice.emit('doneEvent', dataToSend);
       } else {
@@ -33,14 +33,16 @@ export class AppComponent implements OnInit {
           msg: "",
         }
         this.webservice.emit('doneEvent', dataToSend);
-      }
+      };
+      
+      this.notify.hideErrorToast();
     });
 
-setTimeout(()=>{
-if(!this.connection){
-  this.notify.showErrorWithTimeout("Error in Connection","")
-}
-},5000);
+    setTimeout(() => {
+      if (!this.connection) {
+        this.notify.showErrorWithTimeout("Error in Connection", "")
+      }
+    }, 5000);
   }
 
 }

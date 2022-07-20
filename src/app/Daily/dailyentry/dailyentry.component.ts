@@ -283,6 +283,7 @@ export class DailyentryComponent implements OnInit {
       cancelButtonText: "Cancel"
     }).then((result: any) => {
       if (result.isConfirmed) {
+        console.log('logout()',result.isConfirmed);
         this.user.UserLogout();
       }
     },
@@ -317,10 +318,10 @@ export class DailyentryComponent implements OnInit {
     this.arr_todaysData.forEach((ele: any) => {
       if (ele.type == "cow") {
         tCowM = tCowM + ele.milk;
-        tCowR = tCowR + ele.t_rate;
+        tCowR = tCowR + parseFloat(ele.t_rate);
       } else {
         tBuffM = tBuffM + ele.milk;
-        tBuffR = tBuffR + ele.t_rate;
+        tBuffR = tBuffR + parseFloat(ele.t_rate);
       }
     });
     this.totalBuff = tBuffM.toFixed(2);

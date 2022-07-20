@@ -28,6 +28,7 @@ export class AdvanceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getData();
   }
   onSave() {
     let data = {
@@ -49,11 +50,20 @@ export class AdvanceComponent implements OnInit {
     }).then((result: any) => {
       if (result.isConfirmed) {
         this.http.postMethod('Advance/postAdvance', data).subscribe((res: any) => {
-          console.log(res.result);
           if (res.result == 'Data Added Successfully') {
-            console.log("SuccesFull");
+            swal.fire({
+              title: `Data Added Successfully`,
+              text: '',
+              icon: 'success'
+            });
+            this.getData(); 
+            this.frm_Advance.reset();
           } else {
-            console.log("UnsuccesFull");
+            swal.fire({
+              title: `Operation Fail`,
+              text: '',
+              icon: 'warning'
+            });
           }
         }, (err: any) => {
           console.log(err);
@@ -61,6 +71,20 @@ export class AdvanceComponent implements OnInit {
         });
       }
     },
-      function (dismiss) { })
+      function (dismiss) { });
+  };
+
+  getData() {
+    let data = {
+      type: 'advance',
+      No: this.No,
+      UId: this.UId
+    };
+    this.http.postMethod('Advance/getAdvance', data).subscribe((res: any) => {
+      console.log(res.result);
+    }, err => {
+      console.log(err);
+      this.errorHandling.checkError(err)
+    })
   }
 }
