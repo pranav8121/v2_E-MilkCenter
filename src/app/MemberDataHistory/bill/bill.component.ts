@@ -20,7 +20,6 @@ export class BillComponent implements OnInit {
   getData() {
     let data = {};
     Object.assign(data, { UId: this.user.getUId() }, { No: this.user.getMemberNo() }, { BillDetails: this.user.getBillDetails() });
-    console.log(data);
     this.arr_tableData = [];
     this.http.postMethod('DailyData/getBill', data).subscribe((res: any) => {
       if (res.result == "No data") {

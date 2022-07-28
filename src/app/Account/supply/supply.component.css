@@ -9,7 +9,40 @@ input::-webkit-inner-spin-button {
     color: #FFBC6A;
     background-color: #00305a;
 }
+
+select {
+    background-color: #00305a;
+    color: #FFBC6A;
+}
+
+select:after {
+    color: white !important;
+}
+
+option:checked {
+    background-color: #FFBC6A;
+    color: white
+}
+
+option:not(:checked) {
+    background-color: #00305a;
+    color: white;
+}
+
 .form-control:focus {
     border-color: white !important;
     box-shadow: 0 0 8px white !important;
-  }
+}
+
+thead {
+    color: white;
+    text-align: center;
+    font-family: 'Calibri';
+    font-size: 13px;
+}
+
+th {
+    width: 20%;
+    height: 10%;
+    text-align: center;
+}

@@ -13,7 +13,6 @@ import { AdvanceComponent } from './Account/advance/advance.component';
 import { SupplyComponent } from './Account/supply/supply.component';
 import { BillComponent } from './MemberDataHistory/bill/bill.component';
 import { ToastrModule } from 'ngx-toastr';
-// import { NgxSelectModule } from 'ngx-select-ex';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { ToastrModule } from 'ngx-toastr';
     AdvanceComponent,
     SupplyComponent,
     BillComponent,
-    // NgxSelectModule
   ],
   imports: [
     BrowserModule,
@@ -37,7 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 3000,
       positionClass: 'toast-top-right',
     })
-  ], 
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

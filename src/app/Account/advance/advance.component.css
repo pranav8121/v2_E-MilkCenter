@@ -9,7 +9,28 @@ input::-webkit-inner-spin-button {
     color: #FFBC6A;
     background-color: #00305a;
 }
+
 .form-control:focus {
     border-color: white !important;
     box-shadow: 0 0 8px white !important;
-  }
+}
+
+thead {
+    color: white;
+    text-align: center;
+    font-family: 'Calibri';
+    /* font-size: 13px; */
+}
+
+th {
+    width: 33%;
+    height: 10%;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+.green{
+color: rgb(130, 253, 130);
+}
